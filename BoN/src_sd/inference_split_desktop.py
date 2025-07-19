@@ -1,11 +1,3 @@
-# ----------------------------------------------------------------------------
-# Created By  : Sayak Mukherjee
-# Created Date: 29-July-2024
-#
-# ---------------------------------------------------------------------------
-# Contains the code to run inference with specified guidance method
-# ---------------------------------------------------------------------------
-
 import os
 import logging
 import warnings

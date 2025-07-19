@@ -13,10 +13,8 @@ _SCORERS = ['facedetector', 'styletransfer']
 def compute_clipscore():
 
     currhost = os.uname()[1]
-    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
-    base_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided')
+    root_path = Path('')
+    base_path = Path('')
 
 
     perf = dict()

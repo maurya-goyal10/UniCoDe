@@ -59,7 +59,7 @@ def compute_t2i(task):
 
 def compute_fid_t2i(task):
 
-    uncond_path = Path(f'/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/outputs/ibon/uncond_{task}')
+    uncond_path = Path(f'')
 
     export_path = Path('outputs/plots').joinpath(task)
     if not Path.exists(export_path):
@@ -92,7 +92,7 @@ def compute_fid_t2i(task):
 
             uncond_path_p = uncond_path.joinpath(f'images/{prompt_dir.stem}')
 
-            out = os.popen(f"python /tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/pytorch-fid/src/pytorch_fid/fid_score.py {uncond_path_p.as_posix()} {prompt_dir.as_posix()}").read()
+            out = os.popen(f"").read()
 
             print(out)
 
@@ -114,7 +114,7 @@ def compute_fid_t2i(task):
 
 def compute_cmmd_t2i(task):
 
-    uncond_path = Path(f'/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs/uncond_{task}')
+    uncond_path = Path(f'')
 
     export_path = Path('outputs/plots').joinpath(task)
     if not Path.exists(export_path):
@@ -147,7 +147,7 @@ def compute_cmmd_t2i(task):
 
             uncond_path_p = uncond_path.joinpath(f'images/{prompt_dir.stem}')
 
-            out = os.popen(f"python /tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/cmmd-pytorch/main.py {uncond_path_p.as_posix()} {prompt_dir.as_posix()}").read()
+            out = os.popen(f"").read()
 
             print(out)
 
@@ -341,7 +341,7 @@ def plot_noise_ratio(task):
 
 def plot_rew_txt(task):
 
-    clip_path = Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/clipscore')
+    clip_path = Path('')
 
     export_path = Path('outputs/plots').joinpath(task)
     if not Path.exists(export_path):

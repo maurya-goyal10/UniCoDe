@@ -29,11 +29,9 @@ def main():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/home/sayak/Projects/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/home/sayak/Projects/PhD_GuidedDiff/BoN/outputs_img_abla')
+                    else Path('')
 
     
     # Load unconditional rewards
@@ -436,11 +434,9 @@ def ref_divs():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
+                    else Path('')
 
     # Compute scores
     perf = dict()
@@ -452,7 +448,7 @@ def ref_divs():
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem not in ['plots', 'targets']\
                     and 'test' in x.stem and 'i2i' in x.stem)]
     ref_dirs = "/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets" if "housky" in currhost\
-                else "/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets"
+                else ""
     # outputs_path.joinpath('targets')
     # breakpoint()
     for source_dir in tqdm(source_dirs):
@@ -508,15 +504,11 @@ def create_folders():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
-
+                    else Path('')
     newpath = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/cherry_picking') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/cherry_picking2')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/cherry_picking2')
+                    else Path('')
     
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
     for source_dir in tqdm(source_dirs):

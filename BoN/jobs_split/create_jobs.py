@@ -65,8 +65,8 @@ def main():
             
             # if 'p0' in config.stem:
             #     continue
-            if 'pickscore' in config.stem:
-                continue
+            # if 'pickscore' in config.stem:
+            #     continue
             # if not 'general4_' in config.stem:
             #     continue
             # if not any(clustering in config.stem for clustering in ('KMeans','HDBSCAN')):

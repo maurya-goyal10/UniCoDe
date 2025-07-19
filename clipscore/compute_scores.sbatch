@@ -32,7 +32,6 @@ conda activate ldm
 
 export PYTHONDONTWRITEBYTECODE=abc
 export PYTHONUNBUFFERED=TRUE
-export HF_HOME=/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/hf_cache
 
 # ------------------------------------------------------------------------------
 # And finally running the code

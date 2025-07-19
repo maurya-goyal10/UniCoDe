@@ -8,22 +8,18 @@ import pandas as pd
 from pathlib import Path
 from tqdm.auto import tqdm
 
-_SCORERS = ['compress'] # ['compress'] # ['strokegen', 'facedetector', 'styletransfer'] 
+_SCORERS = ['pickscore'] # ['compress'] # ['strokegen', 'facedetector', 'styletransfer'] 
 
 def compute_clipscore():
 
     currhost = os.uname()[1]
-    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
-    base_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN')
+    root_path = Path('')
+    base_path = Path('')
                     
 
     perf = dict()
 
-    filename = 'ablations/table_1_compress_clip.json'
+    filename = 'ablations/ablation_ug_clip.json'
     if Path.exists(base_path.joinpath(filename)):
         with open(base_path.joinpath(filename), 'r') as fp:
             perf = json.load(fp)
@@ -260,12 +256,23 @@ def compute_clipscore():
     #ablations_compress_testing_
     d = [
         # 'uncond_compress'
-        'code4_greedy_b5_compress',
+        # 'code4_greedy_b5_compress',
         # 'code40_greedy_b5_compress',
         # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_1_FreeDoM_compress_gs2',
         # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
         # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_10_FreeDoM_compress_gs2',
         # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_50_FreeDoM_compress_gs2',
+        # 'code_grad_final_general20_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general20_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        # 'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        # 'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_10_FreeDoM_compress_gs2',
+        # 'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        # 'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_8_FreeDoM_compress_gs2',
+        # 'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        # 'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_8_FreeDoM_compress_gs2'
     ]
     
     # d = ['code40_b5_pickscore',
@@ -410,6 +417,33 @@ def compute_clipscore():
     #     'code_grad_final_general4_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
     #     'code_grad_final_general4_greedy_b5_gb5_st10_et0_FreeDoM_pickscore_gs2',
     # ]
+    
+    # d = [
+    # 'uncond_pickscore',
+    # 'code4_greedy_b5_pickscore',
+    # 'code10_greedy_b5_pickscore',
+    # 'code20_greedy_b5_pickscore',
+    # 'code30_greedy_b5_pickscore',
+    # 'code40_greedy_b5_pickscore',
+    # 'code50_greedy_b5_pickscore']
+    
+    # d = [
+    #     'uncond_pickscore',
+    #     'code_grad_final_general1_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general2_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general3_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general4_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general6_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general10_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'code_grad_final_general15_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2'
+    # ]
+    
+    d = [
+        'ug_pickscore_rho150_n8_pickscore',
+        'ug_pickscore_rho150_n2_pickscore', 
+        'ug_pickscore_rho150_n4_pickscore', 
+        'ug_pickscore_rho50_n2_pickscore', 
+    ]
     
     source_dirs = [x for x in base_path.joinpath('outputs').iterdir() if Path.is_dir(x) and x.stem != 'plots' and x.stem in d]
 

@@ -17,7 +17,7 @@ from pathlib import Path
 # from importlib import resources
 from transformers import CLIPModel
 
-ASSETS_PATH = Path("/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/AlignProp/assets")
+ASSETS_PATH = Path("")
 
 class MLPDiff(nn.Module):
     def __init__(self):

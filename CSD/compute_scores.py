@@ -7,16 +7,13 @@ from tqdm.auto import tqdm
 from pathlib import Path
 
 _SCORERS = ["strokegen", "facedetector"] # ['compress'] # ["strokegen", "facedetector", 'styletransfer']
-_SCORERS_db = ["/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/face_data/celeb", '/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/style_folder/styles'] # ['/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/compressibility/compress'] # ['/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/stroke_gen/strokes', "/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/face_data/celeb", '/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/assets/style_folder/styles'] 
+_SCORERS_db = [""]
 
 def main():
 
     currhost = os.uname()[1]
-    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
-    outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
-
+    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') 
+    outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs')
     embeds_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/CSD/embeddings')
 
     # method_bests = ['uncond_strokegen']

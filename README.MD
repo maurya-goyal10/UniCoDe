@@ -2,7 +2,11 @@
 
 
 ## Our approach
+<<<<<<< Updated upstream
 - UniCoDe
+=======
+- UniCoDe 
+>>>>>>> Stashed changes
 
 ## Baselines
 ### Sampling-based

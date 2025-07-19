@@ -8,12 +8,12 @@ from omegaconf import OmegaConf
 _METHODS = ['code_grad_final_general'] # ['c_bon', 'i2i'] # 'ibon', ibon_i2i', 'bon', 'uncond', 'i2i', 'bon_i2i', 'c_code', 'grad_i2i_mpgd', 'grad', 'code_grad', 'code', 'code_grad', 'code_grad_final_general'
 
 _SCORERS = {
-    'aesthetic': '../assets/eval_simple_animals.txt', 
+    # 'aesthetic': '../assets/eval_simple_animals.txt', 
     # 'hpsv2': '../assets/hps_v2_all_eval.txt', 
     # 'facedetector': '../assets/face.txt', 
     # 'styletransfer': '../assets/style.txt',
     # 'strokegen': '../assets/stroke.txt',
-    # 'compress': '../assets/compressibility.txt',
+    'compress': '../assets/compressibility.txt',
     # 'imagereward': '../assets/hps_v2_all_eval.txt', 
     # 'pickscore': '../assets/hps_v2_all_eval.txt',
     # 'multireward': '../assets/eval_simple_animals.txt',
@@ -303,11 +303,11 @@ def create_function():
                                 
             elif method in ['code']:
 
-                for num_samples in [40]:# ['var40','var40i']: # ['var4i','var4','var4rev']: # [4,'var4']: #[10, 20, 30, 40]: # [10, 20, 30, 40]: [4,40]:
+                for num_samples in [10,20,30,50]:# ['var40','var40i']: # ['var4i','var4','var4rev']: # [4,'var4']: #[10, 20, 30, 40]: # [10, 20, 30, 40]: [4,40]:
 
                     for block_size in [5]: # [5, 10, 20, 50, 100]xw
 
-                        for prompt_idx in range(6): #(6,num_prompts):
+                        for prompt_idx in range(num_prompts): #(6,num_prompts):
                             
                             for sampling in ["greedy"]:# ["greedy","multinomial"]:
                                 
@@ -396,8 +396,8 @@ def create_function():
                                         curr_config.guidance.num_samples = num_samples
                                         curr_config.guidance.block_size = block_size
                                         curr_config.guidance.prompt_idxs = [prompt_idx]
-                                        curr_config.guidance.num_images_per_prompt = 50
-                                        curr_config.guidance.num_gen_target_images_per_prompt = 50
+                                        curr_config.guidance.num_images_per_prompt = 10
+                                        curr_config.guidance.num_gen_target_images_per_prompt = 10
                                         curr_config.guidance.sampling = sampling
                                         if num_samples in samples_schedules:
                                             curr_config.guidance.samples_schedule = samples_schedules[num_samples]
@@ -615,13 +615,13 @@ def create_function():
 
             elif method in ['code_grad_final_general']:
                 
-                for num_samples in [1]:#['var4newi']:# ['var4new','var4newi','var4newii']:# [4]:#["var4","var4i","var4ii","var4iii","var4iiii","var4iiiii","var4rev","var4revi","var4revii","var4reviii","var4reviiii","var4reviiiii","var4reviiiiii","var4reviiiiiii"]: #[10, 20, 30, 40]: # [10, 20, 30, 40]:
+                for num_samples in [30]:#['var4newi']:# ['var4new','var4newi','var4newii']:# [4]:#["var4","var4i","var4ii","var4iii","var4iiii","var4iiiii","var4rev","var4revi","var4revii","var4reviii","var4reviiii","var4reviiiii","var4reviiiiii","var4reviiiiiii"]: #[10, 20, 30, 40]: # [10, 20, 30, 40]:
 
                     for block_size in [5]: # [5, 10, 20, 50, 100]
                         
                         for guidance_blocksize in [5]:
                         
-                            for st in [0.6]:
+                            for st in [1.0]:
                                 et = 0.0
                                 
                                 for guidance_scale in [0.2]:# [0.3,0.4,0.5,0.7]: # [0.5,1,10,15]
@@ -707,7 +707,7 @@ def create_function():
                                                                     
                                                             elif scorer in ['compress']:
                                                                 for zoo_method in ['antithetic']: #['naive','antithetic','forward']:
-                                                                    for zoo_n_sample in [50]:
+                                                                    for zoo_n_sample in [10]:
                                                                         curr_config = copy.deepcopy(template)
                                                                         
                                                                         curr_config.project.promptspath = _SCORERS[scorer]
@@ -1253,7 +1253,7 @@ def create_function():
             elif method == 'i2i':
 
                 for percent_noise in [0.6]: # np.arange(0.5, 0.9, 0.1):
-                    for prompt_idx in [10,12,14,25,26,48,49]:
+                    for prompt_idx in [27]:
 
                         for target_idx in range(num_targets):
 

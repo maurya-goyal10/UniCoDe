@@ -5,8 +5,8 @@
 # -----------------------------------------------------------------------------
 
 #SBATCH --partition=insy,general
-#SBATCH --qos=short
-#SBATCH --time=04:00:00
+#SBATCH --qos=medium
+#SBATCH --time=16:00:00
 #SBATCH --output=slurm.out
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -32,7 +32,6 @@ conda activate ldm
 
 export PYTHONDONTWRITEBYTECODE=abc
 export PYTHONUNBUFFERED=TRUE
-export HF_HOME=/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/hf_cache
 
 # ------------------------------------------------------------------------------
 # And finally running the code

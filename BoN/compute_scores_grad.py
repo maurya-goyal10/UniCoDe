@@ -6,7 +6,7 @@ from PIL import Image
 from tqdm.auto import tqdm
 from pathlib import Path
 
-_SCORERS = ['aesthetic'] # ['strokegen', 'facedetector', 'styletransfer'] 'strokegen', 'facedetector'
+_SCORERS = ['pickscore'] # ['strokegen', 'facedetector', 'styletransfer'] 'strokegen', 'facedetector'
 
 _MAP_UG = {
     'styletransfer': {
@@ -25,10 +25,10 @@ def main():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
+                    else Path('')
                     # else Path('/home/sayak/Projects/PhD_GuidedDiff')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
+                    else Path('')
                     # else Path('/home/sayak/Projects/PhD_GuidedDiff/BoN/outputs_img_abla')
 
     
@@ -61,7 +61,7 @@ def main():
     perf = dict()
 
     # name_file = 'perf_ccode_b1'
-    name_file = 'ablations/table_2_aesthetic'
+    name_file = 'ablations/ablation_ug'
     if Path.exists(Path(f'{name_file}.json')):
         with open(f'{name_file}.json', 'r') as fp:
             perf = json.load(fp)      
@@ -83,12 +83,43 @@ def main():
     # ]
     
     #table_2_aesthetic
+    # d = [
+    #     # 'code_grad_final_generalvar4newi_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     'ug_aesthetic_rho30_aesthetic',
+    #     'mpgd_ddim100_tt1_rho75_reward_aesthetic',
+    #     'FreeDoM_aesthetic_rho2_aesthetic'
+    # ]
+    
     d = [
-        # 'code_grad_final_generalvar4newi_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
-        'ug_aesthetic_rho30_aesthetic',
-        'mpgd_ddim100_tt1_rho75_reward_aesthetic',
-        'FreeDoM_aesthetic_rho2_aesthetic'
+        # 'uncond_pickscore',
+        # 'ug_pickscore_rho0_pickscore',
+        # 'ug_pickscore_rho100_pickscore',
+        # 'ug_pickscore_rho150_pickscore',
+        # 'ug_pickscore_rho200_pickscore',
+        # 'ug_pickscore_rho50_n8_pickscore',
+        # 'ug_pickscore_rho150_n8_pickscore',
+        # 'ug_pickscore_rho1000_n8_pickscore',
+        'ug_pickscore_rho50_n2_pickscore',
+        'ug_pickscore_rho50_n4_pickscore',
+        'ug_pickscore_rho50_n16_pickscore',
+        'ug_pickscore_rho150_n2_pickscore',
+        'ug_pickscore_rho150_n4_pickscore',
+        'ug_pickscore_rho150_n16_pickscore',
     ]
+    
+    # d = [
+    #     # 'uncond_pickscore',
+    #     # 'FreeDoM_pickscore_rho10_pickscore',
+    #     # 'FreeDoM_pickscore_rho20_pickscore',
+    #     # 'FreeDoM_pickscore_rho50_pickscore',
+    #     # 'FreeDoM_pickscore_rho10_n20_pickscore'
+    # ]
+    
+    # d = [
+    #     'mpgd_ddim100_tt1_rho50_reward_pickscore',
+    #     'mpgd_ddim100_tt1_rho75_reward_pickscore',
+    #     'mpgd_ddim100_tt1_rho100_reward_pickscore'
+    # ]
 
     source_dirs = [x for x in outputs_path.iterdir() if Path.is_dir(x) and x.stem in d]
     # breakpoint()
@@ -221,11 +252,9 @@ def ref_divs():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
+                    else Path('')
 
     # Compute scores
     perf = dict()
@@ -237,7 +266,7 @@ def ref_divs():
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem not in ['plots', 'targets']\
                     and 'test' in x.stem and 'i2i' in x.stem)]
     ref_dirs = "/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets" if "housky" in currhost\
-                else "/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets"
+                else ""
     # outputs_path.joinpath('targets')
     # breakpoint()
     for source_dir in tqdm(source_dirs):
@@ -293,15 +322,11 @@ def create_folders():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
-
+                    else Path('')
     newpath = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/cherry_picking') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/cherry_picking2')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/cherry_picking2')
+                    else Path('')
     
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
     for source_dir in tqdm(source_dirs):

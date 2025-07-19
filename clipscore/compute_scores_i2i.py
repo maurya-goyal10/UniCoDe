@@ -13,12 +13,8 @@ _SCORERS = ['pickscore'] # ['compress'] # ['strokegen', 'facedetector', 'styletr
 def compute_clipscore():
 
     currhost = os.uname()[1]
-    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
-    base_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN')
+    root_path = Path('') 
+    base_path = Path('') 
                     
 
     perf = dict()

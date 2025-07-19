@@ -56,7 +56,7 @@ def hps_loss_fn(inference_dtype=None, device=None):
     
     tokenizer = get_tokenizer(model_name)
     
-    checkpoint_path = "/home/anujinho/PhD_GuidedDiff/BoN/assets/HPS_v2_compressed.pt" # f"{os.path.expanduser('~')}/.cache/hpsv2/HPS_v2_compressed.pt"
+    checkpoint_path =  ""# f"{os.path.expanduser('~')}/.cache/hpsv2/HPS_v2_compressed.pt"
     # force download of model via score
     # hpsv2.score([], "")
     

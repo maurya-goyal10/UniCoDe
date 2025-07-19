@@ -17,8 +17,8 @@ _TASKS = {
     #     'cmd': 'scripts/aesthetic.py --scale 5.0 --optim_forward_guidance --optim_num_steps 6 --optim_original_conditioning --ddim_steps 100'
     # },
     'pickscore': {
-        'weights': [0],
-        'cmd': 'scripts/pickscore.py --scale 5.0 --optim_forward_guidance --optim_num_steps 1 --optim_original_conditioning --ddim_steps 100'
+        'weights': [50,150],
+        'cmd': 'scripts/pickscore.py --scale 5.0 --optim_forward_guidance --optim_num_steps 16 --optim_original_conditioning --ddim_steps 100'
     },
     # 'face': {
     #     'weights': [20000], #[5000, 10000, 20000, 30000, 40000],
@@ -45,10 +45,6 @@ _TASKS = {
 currhost = os.uname()[1]
 if 'housky' in currhost: # shell cluster
     MODEL_CHECKPOINT = '/glb/data/ptxd_dash/nlasqh/data/models/SD/v1-5-pruned-emaonly.ckpt'
-elif currhost == 'tud1006406':  # sayak desktop
-    MODEL_CHECKPOINT = '/home/sayak/Projects/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/ckpts/v1-5-pruned-emaonly.ckpt'
-else: # cluster
-    MODEL_CHECKPOINT = '/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/Universal-Guided-Diffusion/stable-diffusion-guided/ckpts/v1-5-pruned-emaonly.ckpt'
 
 def create_job_file(param, export_path, task, target_idx, prompt_idx, strength=None):
     """Create the slurm job file
@@ -90,7 +86,7 @@ def create_job_file(param, export_path, task, target_idx, prompt_idx, strength=N
             updated_lines.append(line)
 
     if strength is None:
-        jobfile = export_path.joinpath(f'{task[:3]}_{param}_{target_idx}_p{prompt_idx}.sbatch')
+        jobfile = export_path.joinpath(f'{task[:3]}_{param}_{target_idx}_p{prompt_idx}_8.sbatch')
     else:
         jobfile = export_path.joinpath(f'{task[:3]}_{param}_r{int(float(round(strength,1))*10)}_{target_idx}_p{prompt_idx}.sbatch')
     
@@ -132,7 +128,7 @@ def main():
             for target_idx in range(num_targets):
                 for prompt_idx in range(num_prompts):
                     for forward_wt in _TASKS[task]['weights']:
-                        create_job_file(param=forward_wt, 
+                        create_job_file(param=f'{forward_wt}_16', 
                                         export_path=save_path, 
                                         task=task, 
                                         target_idx=target_idx,

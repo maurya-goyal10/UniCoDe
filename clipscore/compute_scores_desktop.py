@@ -12,7 +12,6 @@ _SCORERS = ['facedetector', 'styletransfer']
 
 # def create_json():
 
-#     source_dirs = [x for x in Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs').iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
 #     for source_dir in source_dirs:
 
 #         scorer = source_dir.stem.split('_')[-1]
@@ -31,8 +30,7 @@ _SCORERS = ['facedetector', 'styletransfer']
 
 def compute_clipscore():
 
-    # base_path = Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN')
-    base_path = Path('/home/sayak/Projects/PhD_GuidedDiff/BoN')
+    base_path = Path('')
 
     # Load unconditional rewards
     uncond_clipscores = dict()

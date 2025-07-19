@@ -4,7 +4,7 @@
 # Slurm directives
 # -----------------------------------------------------------------------------
 
-#SBATCH --partition=general
+#SBATCH --partition=insy,general
 #SBATCH --qos=short
 #SBATCH --time=04:00:00
 #SBATCH --output=new_run_70_pick.out
@@ -47,7 +47,7 @@ nvidia-smi
 
 # cd ../../src_sd
 
-python txt2img.py --prompt "A man sitting at a table in front of bowls of spices." "there is a bathroom that has a lot of things on the floor" "A passenger jet aircraft flying in the sky." "An eye level counter-view shows blue tile, a faucet, dish scrubbers, bowls, a squirt bottle and similar kitchen items." "A TV sitting on top of a wooden stand." "A person sitting on a motorcycle in the grass." --ddim_steps 100 --n_iter 10 --seed 2025 --H 512 --W 512 --rho 0
+python txt2img.py --prompt "A man sitting at a table in front of bowls of spices." "there is a bathroom that has a lot of things on the floor" "A passenger jet aircraft flying in the sky." "An eye level counter-view shows blue tile, a faucet, dish scrubbers, bowls, a squirt bottle and similar kitchen items." "A TV sitting on top of a wooden stand." "A person sitting on a motorcycle in the grass." --ddim_steps 100 --n_iter 20 --seed 2025 --H 512 --W 512 --rho 0.1
 
 echo -n "This run completed on: "
 date

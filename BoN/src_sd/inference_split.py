@@ -1,11 +1,3 @@
-# ----------------------------------------------------------------------------
-# Created By  : Sayak Mukherjee
-# Created Date: 29-July-2024
-#
-# ---------------------------------------------------------------------------
-# Contains the code to run inference with specified guidance method
-# ---------------------------------------------------------------------------
-
 import os
 import logging
 import warnings
@@ -63,15 +55,6 @@ from typing import Optional
 from argparse import ArgumentParser, Namespace
 from diffusers import DDIMScheduler, DDPMScheduler
 from diffusers.utils.torch_utils import randn_tensor
-
-os.environ['TRANSFORMERS_CACHE'] = '/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal'
-os.environ['HF_HOME'] = '/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal'
-os.environ['TORCH_HOME'] = '/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal'
-# currhost = os.uname()[1]
-# if (currhost != 'tud1006406') and ("housky" not in currhost):  # TUD cluster
-    # os.environ['TRANSFORMERS_CACHE'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
-    # os.environ['HF_HOME'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
-    # os.environ['TORCH_HOME'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
 
 logger = logging.getLogger("guided-diff")
 

@@ -4,7 +4,7 @@
 # Slurm directives
 # -----------------------------------------------------------------------------
 
-#SBATCH --partition=general
+#SBATCH --partition=insy,general
 #SBATCH --qos=short
 #SBATCH --time=04:00:00
 #SBATCH --output=new_run_51_pickscore.out
@@ -47,7 +47,7 @@ nvidia-smi
 
 # cd ../../src_sd
 
-python txt2img.py --prompt "a woman holding a plate of cake in her hand" "yellow and red motorcycle with a man riding on it next to grass" "A motorcycle stands in front of three people on a sidewalk." "classic cars on a city street with people and a dog" "People getting on a bus in the city" --ddim_steps 100 --n_iter 10 --seed 2024 --H 512 --W 512 --rho 0.2
+python txt2img.py --prompt "a woman holding a plate of cake in her hand" "yellow and red motorcycle with a man riding on it next to grass" "A motorcycle stands in front of three people on a sidewalk." "classic cars on a city street with people and a dog" "People getting on a bus in the city" --ddim_steps 100 --n_iter 10 --seed 2024 --H 512 --W 512 --rho 0.5
 
 echo -n "This run completed on: "
 date

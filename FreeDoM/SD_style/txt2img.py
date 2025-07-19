@@ -251,15 +251,9 @@ def main():
     parser.add_argument(
         "--ckpt",
         type=str,
-        default="/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/mpgd_pytorch/nonlinear/SD_style/models/ldm/stable-diffusion-v1/sd-v1-4.ckpt",
+        default="",
         help="path to checkpoint of model",
     )
-    # parser.add_argument(
-    #     "--from_file",
-    #     type=str,
-    #     default="/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/AlignProp/assets/eval_simple_animals.txt",
-    #     help="path to checkpoint of model",
-    # )
     parser.add_argument(
         "--seed",
         type=int,
@@ -341,8 +335,9 @@ def main():
             data = f.read().splitlines()
             data = list(chunk(data, batch_size))
 
-    sample_path = os.path.join(outpath, f"FreeDoM_multireward_rho{opt.rho}_aes{opt.weight1}_pic{opt.weight2}")
+    # sample_path = os.path.join(outpath, f"FreeDoM_multireward_rho{opt.rho}_aes{opt.weight1}_pic{opt.weight2}")
     # sample_path = os.path.join(outpath, f"FreeDoM_aesthetic_rho{opt.rho}")
+    sample_path = os.path.join(outpath, f"FreeDoM_pickscore_rho{opt.rho}")
     os.makedirs(sample_path, exist_ok=True)
     base_count = len(os.listdir(sample_path))
     grid_count = len(os.listdir(outpath)) - 1
@@ -356,7 +351,8 @@ def main():
     print(data)
     
     # image_encoder = AestheticScorer().cuda()
-    image_encoder = MultiReward("aesthetic","pickscore",opt.weight1,opt.weight2).cuda()
+    image_encoder = PickScoreScorer().cuda()
+    # image_encoder = MultiReward("aesthetic","pickscore",opt.weight1,opt.weight2).cuda()
     
     with precision_scope("cuda"):
         with model.ema_scope():
@@ -477,11 +473,12 @@ def main():
 
                     x_samples_ddim = model.decode_first_stage(samples_ddim)
                     # score = AestheticScorer().cuda().score(x_samples_ddim)[0].item()
-                    score,score1,score2 = image_encoder.score(x_samples_ddim.detach(),prompt,return_all=True)
-                    score = score[0].item()
-                    score1 = score1[0].item()
-                    score2 = score2[0].item()
-                    # score = image_encoder.score(x_samples_ddim.detach())[0].item()
+                    # score = PickScoreScorer().cuda().score(x_samples_ddim.detach(),prompt)[0].item()
+                    # score,score1,score2 = image_encoder.score(x_samples_ddim.detach(),prompt,return_all=True)
+                    # score = score[0].item()
+                    # score1 = score1[0].item()
+                    # score2 = score2[0].item()
+                    score = image_encoder.score(x_samples_ddim.detach(),prompt)[0].item()
                     x_samples_ddim = torch.clamp((x_samples_ddim + 1.0) / 2.0, min=0.0, max=1.0)
                     x_samples_ddim = x_samples_ddim.cpu().permute(0, 2, 3, 1).detach().numpy()
 
@@ -491,19 +488,19 @@ def main():
                     x_checked_image_torch = torch.from_numpy(x_checked_image).permute(0, 3, 1, 2)
                     
                     score_dir = os.path.join(savepath, f"rewards.json")
-                    score_dir1 = os.path.join(savepath, f"rewards1.json")
-                    score_dir2 = os.path.join(savepath, f"rewards2.json")
+                    # score_dir1 = os.path.join(savepath, f"rewards1.json")
+                    # score_dir2 = os.path.join(savepath, f"rewards2.json")
                     
                     z = 0
                     if os.path.exists(score_dir):
                         with open(score_dir,"r") as f:
                             data = json.load(f)
-                    if os.path.exists(score_dir1):
-                        with open(score_dir1,"r") as f:
-                            data1 = json.load(f)
-                    if os.path.exists(score_dir2):
-                        with open(score_dir2,"r") as f:
-                            data2 = json.load(f)
+                    # if os.path.exists(score_dir1):
+                    #     with open(score_dir1,"r") as f:
+                    #         data1 = json.load(f)
+                    # if os.path.exists(score_dir2):
+                    #     with open(score_dir2,"r") as f:
+                    #         data2 = json.load(f)
                             
                         if data is not None:
                             z = len(data)
@@ -517,8 +514,8 @@ def main():
                             z += 1
                             # base_count += 1
                             update_score(score_dir,prompt,score) 
-                            update_score(score_dir1,prompt,score1) 
-                            update_score(score_dir2,prompt,score2) 
+                            # update_score(score_dir1,prompt,score1) 
+                            # update_score(score_dir2,prompt,score2) 
                 # torch.cuda.empty_cache()
 
             # tic = time.time()

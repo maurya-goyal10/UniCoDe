@@ -8,7 +8,7 @@ from pathlib import Path
 
 import uuid
 
-_SCORERS = ['aesthetic'] # ['strokegen', 'facedetector', 'styletransfer'] 'strokegen', 'facedetector'
+_SCORERS = ['compress'] # ['strokegen', 'facedetector', 'styletransfer'] 'strokegen', 'facedetector'
 
 _MAP_UG = {
     'styletransfer': {
@@ -27,11 +27,9 @@ def main():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/home/sayak/Projects/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/home/sayak/Projects/PhD_GuidedDiff/BoN/outputs_img_abla')
+                    else Path('')
 
     
     # Load unconditional rewards
@@ -63,7 +61,7 @@ def main():
     perf = dict()
 
     # name_file = 'perf_ccode_b1'
-    name_file = 'ablations/blockwise_grad'
+    name_file = 'ablations/table_1_compress'
     if Path.exists(Path(f'{name_file}.json')):
         with open(f'{name_file}.json', 'r') as fp:
             perf = json.load(fp)
@@ -241,6 +239,19 @@ def main():
     #     # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_10_FreeDoM_compress_gs2',
     #     # 'code_grad_final_general4_greedy_b5_gb5_st10_et0_antithetic_50_FreeDoM_compress_gs2',
     # ]
+    d = [
+        # 'code_grad_final_general20_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general20_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        # 'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        # 'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        'code_grad_final_general30_greedy_b5_gb5_st10_et0_antithetic_10_FreeDoM_compress_gs2',
+        'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        'code_grad_final_general35_greedy_b5_gb5_st10_et0_antithetic_8_FreeDoM_compress_gs2',
+        'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_2_FreeDoM_compress_gs2',
+        'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_5_FreeDoM_compress_gs2',
+        'code_grad_final_general40_greedy_b5_gb5_st10_et0_antithetic_8_FreeDoM_compress_gs2'
+    ]
     
     # ablation_pickscore_temp_newi_
     # d = [
@@ -288,9 +299,26 @@ def main():
     #     'code_grad_final_general4_greedy_b5_gb4_st10_et0_FreeDoM_new_pickscore_gs2'
     # ]
     
-    d = [
-        'code_grad_final_general1_greedy_b5_gb5_st6_et0_FreeDoM_aesthetic_gs2'
-    ]
+    # d = [
+    #     # 'uncond_pickscore',
+    #     # 'code_grad_final_general1_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general2_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general3_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general4_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general6_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general10_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2',
+    #     # 'code_grad_final_general15_greedy_b5_gb4_st10_et0_FreeDoM_pickscore_gs2'
+    # ]
+    
+    # d = [
+    #     'uncond_pickscore',
+    #     'code4_greedy_b5_pickscore',
+    #     'code10_greedy_b5_pickscore',
+    #     'code20_greedy_b5_pickscore',
+    #     'code30_greedy_b5_pickscore',
+    #     'code40_greedy_b5_pickscore',
+    #     'code50_greedy_b5_pickscore'
+    # ]
 
     source_dirs = [x for x in outputs_path.iterdir() if Path.is_dir(x) and x.stem in d]
     # breakpoint()
@@ -421,11 +449,9 @@ def ref_divs():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
+                    else Path('')
 
     # Compute scores
     perf = dict()
@@ -437,7 +463,7 @@ def ref_divs():
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem not in ['plots', 'targets']\
                     and 'test' in x.stem and 'i2i' in x.stem)]
     ref_dirs = "/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets" if "housky" in currhost\
-                else "/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/Universal-Guided-Diffusion/stable-diffusion-guided/outputs/targets"
+                else ""
     # outputs_path.joinpath('targets')
     # breakpoint()
     for source_dir in tqdm(source_dirs):
@@ -493,15 +519,12 @@ def create_folders():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/outputs')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
+                    else Path('')
 
     newpath = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/cherry_picking') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-umbrella/StudentsCVlab/mgoyal/CoDe_ext/BoN/cherry_picking2')
-                    # else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/cherry_picking2')
+                    else Path('')
     
     source_dirs = [x for x in outputs_path.iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
     for source_dir in tqdm(source_dirs):

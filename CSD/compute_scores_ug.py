@@ -25,17 +25,14 @@ _MAP_UG = {
 }
 
 _SCORERS = ['facedetector']
-_SCORERS_db = ['/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/data/face_data/celeb']
+_SCORERS_db = ['']
 
 def main():
 
     currhost = os.uname()[1]
-    root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
-    outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs')
-
-    embeds_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/CSD/embeddings_ug')
+    root_path = Path('')
+    outputs_path = Path('') 
+    embeds_path = Path('')
     method_bests = ['test_style_i2i_6_r5', 'test_style_i2i_6_r6', 'test_style_i2i_6_r7', 'test_style_i2i_6_r8', 
                     'test_face_i2i_20000_r5', 'test_face_i2i_20000_r6', 'test_face_i2i_20000_r7', 'test_face_i2i_20000_r8',
                     'test_stroke_i2i_6_r6']
