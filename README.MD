@@ -2,7 +2,7 @@
 
 
 ## Our approach
-- UniCoDe[`Code`](BoN/)
+- UniCoDe
 
 ## Baselines
 ### Sampling-based
