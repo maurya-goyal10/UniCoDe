@@ -1,11 +1,3 @@
-#----------------------------------------------------------------------------
-# Created By  : Sayak Mukherjee
-# Created Date: 09-Aug-2024
-# 
-# ---------------------------------------------------------------------------
-# 
-# ---------------------------------------------------------------------------
-
 import re, os
 import numpy as np
 
@@ -41,10 +33,8 @@ _TASKS = {
 currhost = os.uname()[1]
 if 'housky' in currhost: # shell cluster
     MODEL_CHECKPOINT = '/glb/data/ptxd_dash/nlasqh/data/models/SD/v1-5-pruned-emaonly.ckpt'
-elif currhost == 'tud1006406':  # sayak desktop
-    MODEL_CHECKPOINT = '/home/sayak/Projects/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/ckpts/v1-5-pruned-emaonly.ckpt'
 else: # cluster
-    MODEL_CHECKPOINT = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/ckpts/v1-5-pruned-emaonly.ckpt'
+    MODEL_CHECKPOINT = '../Universal-Guided-Diffusion/stable-diffusion-guided/ckpts/v1-5-pruned-emaonly.ckpt'
 
 def create_job_file(param, export_path, task, target_idx, prompt_idx, strength=None):
     """Create the slurm job file

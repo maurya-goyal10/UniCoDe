@@ -1,7 +1,3 @@
-#----------------------------------------------------------------------------
-# Created By  : Sayak Mukherjee
-# Created Date: 29-July-2024
-#
 # ---------------------------------------------------------------------------
 # Contains the code for Object Detection
 # Ref: https://github.com/arpitbansal297/Universal-Guided-Diffusion/blob/main/stable-diffusion-guided/scripts/object_detection.py

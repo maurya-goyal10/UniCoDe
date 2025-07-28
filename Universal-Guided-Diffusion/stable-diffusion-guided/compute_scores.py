@@ -29,9 +29,9 @@ def main():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('../')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs_addons')
+                    else Path('../Universal-Guided-Diffusion/stable-diffusion-guided/outputs_addons')
     
 
     # Load unconditional rewards
@@ -138,9 +138,9 @@ def ref_divs():
 
     currhost = os.uname()[1]
     root_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff')
+                    else Path('../')
     outputs_path = Path('/glb/data/ptxd_dash/nlasqh/PhD_GuidedDiff/BoN/outputs') if "housky" in currhost\
-                    else Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/Universal-Guided-Diffusion/stable-diffusion-guided/outputs')
+                    else Path('../Universal-Guided-Diffusion/stable-diffusion-guided/outputs')
 
     # Compute scores
     perf = dict()

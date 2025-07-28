@@ -37,10 +37,6 @@ from diffusers import DDIMScheduler, DDPMScheduler
 from diffusers.utils.torch_utils import randn_tensor
 
 currhost = os.uname()[1]
-if (currhost != 'tud1006406') and ("housky" not in currhost):  # TUD cluster
-    os.environ['TRANSFORMERS_CACHE'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
-    os.environ['HF_HOME'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
-    os.environ['TORCH_HOME'] = '/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee'
 
 logger = logging.getLogger("guided-diff")
 

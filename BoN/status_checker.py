@@ -37,7 +37,7 @@ def main():
 
     counter = dict()
 
-    source_dirs = [x for x in Path('/tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/BoN/outputs').iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
+    source_dirs = [x for x in Path('../BoN/outputs').iterdir() if (Path.is_dir(x) and x.stem != 'plots')]
 
     for source_dir in tqdm(source_dirs):
 

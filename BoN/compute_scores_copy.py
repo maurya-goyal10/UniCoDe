@@ -393,10 +393,10 @@ def main():
 
                     # try:
                     #     ref_path_p = ref_dirs.joinpath(f'{scorer}').joinpath(target_dir.stem)
-                    #     out = os.popen(f"python /tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/pytorch-fid/src/pytorch_fid/fid_score.py '{ref_path_p.as_posix()}' '{prompt_dir.as_posix()}'").read()
+                    #     out = os.popen(f"python ../pytorch-fid/src/pytorch_fid/fid_score.py '{ref_path_p.as_posix()}' '{prompt_dir.as_posix()}'").read()
                     #     ref_fids.append(float(out.split('  ')[-1].split('\n')[0]))
 
-                    #     out = os.popen(f"python /tudelft.net/staff-bulk/ewi/insy/VisionLab/smukherjee/PhD_GuidedDiff/cmmd-pytorch/main.py '{ref_path_p.as_posix()}' '{prompt_dir.as_posix()}'").read()
+                    #     out = os.popen(f"python ..f/cmmd-pytorch/main.py '{ref_path_p.as_posix()}' '{prompt_dir.as_posix()}'").read()
                     #     ref_cmmds.append(float(out.split('  ')[-1].split('\n')[0]))
 
                     # except:
