@@ -27,7 +27,7 @@ The figure below illustrates the structure of the proposed UniCoDe framework, wh
 
 UniCoDe's performance is characterized by its ability to achieve better trade-offs between aligning with a given reward and maintaining fidelity to the diffusion model's prior distribution. The method is competitive with state-of-the-art baselines across a range of tasks.
 
-![Figure 2: Performance of UniCoDe vs other baselines on reward (Pickscore) vs divergence (CMMD) for the T2I generation scenario](./assets/rew_vs_div.png)
+<img src="./assets/rew_vs_div.png" alt="Performance of UniCoDe vs other baselines on reward (Pickscore) vs divergence (CMMD) for the T2I generation scenario" width="60%"/>
 
 This figure presents the trade-off between reward alignment (Pickscore) and unconditional prior divergence (CMMD) for various guidance methods across Text-to-Image generation task. The results show the performance gain achieved by UniCoDe in optimizing this balance compared to existing sampling and gradient-guided baselines.
 
