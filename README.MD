@@ -18,7 +18,7 @@ In this work, we propose a universal algorithm, **UniCoDe**, which brings togeth
 The UniCoDe algorithm provides a universal approach to inference-time guidance by merging the exploratory nature of sampling with the directed optimization of gradients.
 
 <div align="center">
-    <img src="assets/teaser.png" alt="Example outputs generated using UniCoDe over a variety of different rewards" height="60%"/>
+    <img src="assets/teaser.png" alt="Example outputs generated using UniCoDe over a variety of different rewards" height="40%"/>
 </div>
 
 The figure below illustrates the structure of the proposed UniCoDe framework, which unifies sampling and gradient-guided approaches. The core idea is to incorporate a local gradient signal into the sampling step of the Denoising Diffusion Probabilistic Model (DDPM) to effectively steer the denoising trajectory towards high-reward regions.
@@ -32,7 +32,7 @@ The figure below illustrates the structure of the proposed UniCoDe framework, wh
 UniCoDe's performance is characterized by its ability to achieve better trade-offs between aligning with a given reward and maintaining fidelity to the diffusion model's prior distribution. The method is competitive with state-of-the-art baselines across a range of tasks.
 
 <div align="center">
-    <img src="./assets/rew_vs_div.png" alt="Performance of UniCoDe vs other baselines on reward (Pickscore) vs divergence (CMMD) for the T2I generation scenario" width="40%"/>
+    <img src="./assets/rew_vs_div.png" alt="Performance of UniCoDe vs other baselines on reward (Pickscore) vs divergence (CMMD) for the T2I generation scenario" width="60%"/>
 </div>
 
 
