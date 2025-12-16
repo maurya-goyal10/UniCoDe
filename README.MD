@@ -17,7 +17,7 @@ In this work, we propose a universal algorithm, **UniCoDe**, which brings togeth
 
 The UniCoDe algorithm provides a universal approach to inference-time guidance by merging the exploratory nature of sampling with the directed optimization of gradients.
 
-![Figure 1: Conceptual illustration of the UniCoDe framework, showing the integration of gradient signals into the sampling process for unified control during diffusion model inference.](./assets/schematic_diagram.pdf)
+![Figure 1: Conceptual illustration of the UniCoDe framework, showing the integration of gradient signals into the sampling process for unified control during diffusion model inference.](./assets/schematic_diagram.png)
 
 The figure below illustrates the structure of the proposed UniCoDe framework, which unifies sampling and gradient-guided approaches. The core idea is to incorporate a local gradient signal into the sampling step of the Denoising Diffusion Probabilistic Model (DDPM) to effectively steer the denoising trajectory towards high-reward regions.
 
