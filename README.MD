@@ -17,11 +17,13 @@ In this work, we propose a universal algorithm, **UniCoDe**, which brings togeth
 
 The UniCoDe algorithm provides a universal approach to inference-time guidance by merging the exploratory nature of sampling with the directed optimization of gradients.
 
+The figure below illustrates the adaptability and control enabled by UniCoDe across diverse, complex guidance scenarios. The examples showcase images generated using UniCoDe for two different reward functions: the Aesthetic Scorer and Pickscore, in two distinct applications: Text-to-Image (T2I) generation and (Text-and-Image)-to-Image generation (style transfer). These results demonstrate UniCoDe's robust capability to capture and align generation with even complex, human-preference-based rewards while maintaining high image fidelity.
+
 <div align="center">
     <img src="assets/teaser.png" alt="Example outputs generated using UniCoDe over a variety of different rewards" width="40%"/>
 </div>
 
-The figure below illustrates the structure of the proposed UniCoDe framework, which unifies sampling and gradient-guided approaches. The core idea is to incorporate a local gradient signal into the sampling step of the Denoising Diffusion Probabilistic Model (DDPM) to effectively steer the denoising trajectory towards high-reward regions.
+The figure below presents the conceptual overview of the UniCoDe framework. The core mechanism is the unification of sampling and gradient-guided approaches to overcome the sample inefficiency problem that grows exponentially with the divergence between the reward distribution and the diffusion prior. UniCoDe addresses this by implementing a form of preferential sampling. Specifically, it incorporates a local gradient signal directly into the denoising sampling step, creating an explicit "push" on each sample. This explicit push steers the denoising trajectory towards high-reward regions, which effectively reduces the required number of samples and achieves competetive reward alignment tradeoffs with the conventional sampling and gradient guidance methods.
 
 <div align="center">
     <img src="./assets/schematic_diagram.png" alt="Figure 1: Conceptual illustration of the UniCoDe framework, showing the integration of gradient signals into the sampling process for unified control during diffusion model inference." width="80%"/>
