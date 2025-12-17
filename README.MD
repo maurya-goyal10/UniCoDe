@@ -9,7 +9,7 @@
 
 ## Installation
 
-This code is written in Python 3.8.5 and requires the packages listed in [cluster_requirement.txt](./cluster_requirement.txt).
+This code is written in Python 3.8.5 and requires the packages listed in [cluster_requirements.txt](./cluster_requirements.txt).
 
 To run the code, set up a virtual environment using conda:
 
@@ -18,7 +18,7 @@ To run the code, set up a virtual environment using conda:
 cd <path-to-cloned-directory>
 
 # Create the conda environment from the requirements file
-conda create --name <env> --file ./cluster_requirement.txt
+conda create --name <env> --file ./cluster_requirements.txt
 
 # Activate the environment
 conda activate <env>
