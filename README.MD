@@ -30,10 +30,10 @@ This repository follows a **config-driven workflow** to streamline local and clu
 ---
 
 ### 1. Generate Configurations
-Configure your experimental settings by modifying `_SCORES` and `_METHODS` in [create_config.py](./BON/configs_split/create_config.py).
+Configure your experimental settings by modifying `_SCORES` and `_METHODS` in [create_config.py](./BoN/configs_split/create_config.py).
 
 ```bash
-python ./BON/configs_split/create_config.py
+python ./BoN/configs_split/create_config.py
 ```
 Result: YAML files are saved to `./configs_split/<method>/`
 Purpose: Each file acts as a standalone specification for a single experiment
