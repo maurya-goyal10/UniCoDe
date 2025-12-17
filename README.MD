@@ -37,7 +37,9 @@ python ./BoN/configs_split/create_config.py
 ```
 Result: YAML files are saved to `./configs_split/<method>/`
 Purpose: Each file acts as a standalone specification for a single experiment
+
 ---
+
 ### 2. Execute Inference
 Run the generation process locally or prepare scripts for a compute cluster.
 
@@ -65,6 +67,7 @@ Post-inference, calculate aggregate performance using these specialized scripts:
 | **ClipScore** | [compute_scores.py](./clipscore/compute_scores.py) |
 
 ---
+
 ## Abstract
 
 Aligning diffusion model outputs with downstream objectives is essential for improving task-specific performance. Broadly, inference-time training-free approaches for aligning diffusion models can be categorized into two main strategies: sampling-based methods, which explore multiple candidate outputs and select those with higher reward signals, and gradient-guided methods, which use differentiable reward approximations to directly steer the generation process.
