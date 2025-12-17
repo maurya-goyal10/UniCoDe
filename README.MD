@@ -7,6 +7,23 @@
 ¹Delft University of Technology, The Netherlands
 ²Shell Global Solutions International B.V., Amsterdam, The Netherlands
 
+## Installation
+
+This code is written in Python 3.8.5 and requires the packages listed in [cluster_requirement.txt](./cluster_requirement.txt).
+
+To run the code, set up a virtual environment using conda:
+
+```bash
+# Navigate to the project directory
+cd <path-to-cloned-directory>
+
+# Create the conda environment from the requirements file
+conda create --name <env> --file ./cluster_requirement.txt
+
+# Activate the environment
+conda activate <env>
+```
+
 ## Abstract
 
 Aligning diffusion model outputs with downstream objectives is essential for improving task-specific performance. Broadly, inference-time training-free approaches for aligning diffusion models can be categorized into two main strategies: sampling-based methods, which explore multiple candidate outputs and select those with higher reward signals, and gradient-guided methods, which use differentiable reward approximations to directly steer the generation process.
