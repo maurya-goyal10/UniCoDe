@@ -75,29 +75,39 @@ Aligning diffusion model outputs with downstream objectives is essential for imp
 In this work, we propose a universal algorithm, **UniCoDe**, which brings together the strengths of sampling and gradient-based guidance into a unified framework. UniCoDe integrates local gradient signals during sampling, thereby addressing the sampling inefficiency inherent in complex reward-based sampling approaches. By cohesively combining these two paradigms, UniCoDe enables more efficient sampling while offering better trade-offs between reward alignment and divergence from the diffusion unconditional prior. Empirical results demonstrate that UniCoDe remains competitive with state-of-the-art baselines across a range of tasks.
 
 ## The UniCoDe Framework
-
-The UniCoDe algorithm provides a universal approach to inference-time guidance by merging the exploratory nature of sampling with the directed optimization of gradients.
-
-The figure below illustrates the adaptability and control enabled by UniCoDe across diverse, complex guidance scenarios. The examples showcase images generated using UniCoDe for two different reward functions: the Aesthetic Scorer and Pickscore, in two distinct applications: Text-to-Image (T2I) generation and (Text-and-Image)-to-Image generation (style transfer). These results demonstrate UniCoDe's robust capability to capture and align generation with even complex, human-preference-based rewards while maintaining high image fidelity.
+UniCoDe merges the exploratory nature of sampling with directed gradient steering to enable precise control over diverse guidance scenarios.
 
 <div align="center">
-    <img src="assets/teaser.png" alt="Example outputs generated using UniCoDe over a variety of different rewards" width="80%"/>
+    <img src="assets/teaser.png" alt="UniCoDe outputs" width="80%"/>
+    <br>
+    <em><strong>Visual Adaptability:</strong> UniCoDe effectively aligns Text-to-Image and Style Transfer tasks with complex human-preference rewards like Pickscore and Aesthetic Scorer while maintaining high image fidelity.</em>
 </div>
 
-The figure below presents the conceptual overview of the UniCoDe framework. The core mechanism is the unification of sampling and gradient-guided approaches to overcome the sample inefficiency problem that grows exponentially with the divergence between the reward distribution and the diffusion prior. UniCoDe addresses this by implementing a form of preferential sampling. Specifically, it incorporates a local gradient signal directly into the denoising sampling step, creating an explicit "push" on each sample. This explicit push steers the denoising trajectory towards high-reward regions, which effectively reduces the required number of samples and achieves competetive reward alignment tradeoffs with the conventional sampling and gradient guidance methods.
+**Core Mechanism:** The framework overcomes the "sample inefficiency" problem—where the gap between the reward distribution and diffusion prior grows exponentially—by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
 
 <div align="center">
-    <img src="./assets/schematic_diagram.png" alt="Figure 1: Conceptual illustration of the UniCoDe framework, showing the integration of gradient signals into the sampling process for unified control during diffusion model inference." width="80%"/>
+    <img src="./assets/schematic_diagram.png" alt="UniCoDe framework schematic" width="80%"/>
+    <br>
+    <em><strong>Methodology:</strong> Conceptual overview showing the integration of gradient signals into the denoising steps to create a unified steering mechanism.</em>
 </div>
 
 ## Performance and Results
-
-UniCoDe's performance is characterized by its ability to achieve better trade-offs between aligning with a given reward and maintaining fidelity to the diffusion model's prior distribution. The figure below presents the trade-off between reward alignment (Pickscore) and unconditional prior divergence (CMMD) for various guidance methods across Text-to-Image (T2I) generation task. The results show the performance gain achieved by UniCoDe in optimizing this balance compared to existing sampling and gradient-guided baselines.
-
+UniCoDe optimizes the balance between **reward alignment** (Pickscore) and **unconditional prior divergence** (CMMD).
 
 <div align="center">
-    <img src="./assets/rew_vs_div.png" alt="Performance of UniCoDe vs other baselines on reward (Pickscore) vs divergence (CMMD) for the T2I generation scenario" width="60%"/>
+    <img src="./assets/rew_vs_div.png" alt="Reward vs Divergence plot" width="60%"/>
+    <br>
+    <em><strong>Pareto Frontier:</strong> Compared to standalone sampling or gradient-guided baselines, UniCoDe achieves higher rewards with significantly lower distribution shift (CMMD).</em>
 </div>
+
+## Parameter Guidelines
+The trade-off between reward, fidelity, and compute is governed by three key variables:
+
+* **$N$ (Exploration):** Enhances reward-alignment through broader search but increases computational cost and prior divergence.
+* **$B_g$ (Gradient Intensity):** Lowering $B_g$ boosts rewards via a stronger gradient "push," but excessively low values may lead to "reward hacking."
+* **$B_s$ (Sampling Frequency):** Lower $B_s$ values represent more aggressive sampling, improving alignment at the cost of higher divergence.
+
+---
 
 
 ## References
