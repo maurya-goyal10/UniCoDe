@@ -23,6 +23,46 @@ conda create --name <env> --file ./cluster_requirements.txt
 # Activate the environment
 conda activate <env>
 ```
+## Running Experiments
+
+This repository follows a **config-driven workflow** to streamline local and cluster-based experimentation.
+
+---
+
+### 1. Generate Configurations
+Configure your experimental settings by modifying `_SCORES` and `_METHODS` in [create_config.py](./BON/configs_split/create_config.py).
+
+```bash
+python ./BON/configs_split/create_config.py
+```
+Result: YAML files are saved to `./configs_split/<method>/`
+Purpose: Each file acts as a standalone specification for a single experiment
+
+### 2. Execute Inference
+Run the generation process locally or prepare scripts for a compute cluster.
+
+**Local Run:**
+```bash
+python inference_split.py --config ../configs_split/<method>/<config_name>.yaml
+```
+
+**Cluster Run:**
+Generate batch job scripts using [create_jobs.py](./BoN/jobs_split/create_jobs.py).
+
+**Automated Workflow:**
+* **Setup:** Loads parameters from the selected YAML configuration.
+* **Generation:** Saves images to `outputs/<method>/<config_name>/`.
+* **Scoring:** Writes computed reward values to `rewards.json`.
+
+---
+
+### 3. Evaluation Metrics
+Post-inference, calculate aggregate performance using these specialized scripts:
+
+| Metric | Script Path |
+| :--- | :--- |
+| **Aggregated Rewards, FID, & CMMD** | [compute_scores.py](./BoN/compute_scores.py) |
+| **ClipScore** | [compute_scores.py](./clipscore/compute_scores.py) |
 
 ## Abstract
 
