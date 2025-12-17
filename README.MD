@@ -68,11 +68,9 @@ Post-inference, calculate aggregate performance using these specialized scripts:
 
 ---
 
-## Abstract
+## Overview
 
-Aligning diffusion model outputs with downstream objectives is essential for improving task-specific performance. Broadly, inference-time training-free approaches for aligning diffusion models can be categorized into two main strategies: sampling-based methods, which explore multiple candidate outputs and select those with higher reward signals, and gradient-guided methods, which use differentiable reward approximations to directly steer the generation process.
-
-In this work, we propose a universal algorithm, **UniCoDe**, which brings together the strengths of sampling and gradient-based guidance into a unified framework. UniCoDe integrates local gradient signals during sampling, thereby addressing the sampling inefficiency inherent in complex reward-based sampling approaches. By cohesively combining these two paradigms, UniCoDe enables more efficient sampling while offering better trade-offs between reward alignment and divergence from the diffusion unconditional prior. Empirical results demonstrate that UniCoDe remains competitive with state-of-the-art baselines across a range of tasks.
+**UniCoDe** is a universal inference-time algorithm designed to align diffusion model outputs with downstream objectives by unifying **sampling-based exploration** and **gradient-guided optimization**. While traditional methods often struggle with sampling inefficiency or poor prior adherence, UniCoDe integrates local gradient signals directly into the denoising steps to steer trajectories toward high-reward regions. This overcomes the exponential search costs associated with complex rewards, allowing for more efficient generation. Ultimately, UniCoDe enables a superior trade-off between reward alignment and adherence to the diffusion prior, remaining competitive with state-of-the-art baselines across Text-to-Image (T2I) and (T+I)2I tasks.
 
 ## The UniCoDe Framework
 UniCoDe merges the exploratory nature of sampling with directed gradient steering to enable precise control over diverse guidance scenarios.
@@ -80,17 +78,17 @@ UniCoDe merges the exploratory nature of sampling with directed gradient steerin
 <div align="center">
     <img src="assets/teaser.png" alt="UniCoDe outputs" width="80%"/>
     <br>
-    <em><strong>Visual Adaptability:</strong> UniCoDe effectively aligns Text-to-Image and Style Transfer tasks with complex human-preference rewards like Pickscore and Aesthetic Scorer while maintaining high image fidelity.</em>
+    <em><strong>Visual Adaptability:</strong> UniCoDe effectively aligns T2I and (T+I)2I tasks with complex human-preference rewards like Pickscore and Aesthetic Scorer while maintaining high image fidelity.</em>
 </div>
 
 <br>
 
-**Core Mechanism:** The framework overcomes the "sample inefficiency" problem, where the gap between the reward distribution and diffusion prior grows exponentially, by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
+**Core Mechanism:** The framework overcomes the sample inefficiency problem, where the gap between the reward distribution and diffusion prior grows exponentially, by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
 
 <div align="center">
     <img src="./assets/schematic_diagram.png" alt="UniCoDe framework schematic" width="80%"/>
     <br>
-    <em><strong>Methodology:</strong> Conceptual overview showing the integration of gradient signals into the denoising steps to create a unified steering mechanism.</em>
+    <em><strong>Methodology Comparison:</strong> While <strong>BoN</strong> selects the best sample after full denoising and <strong>CoDe</strong> uses greedy blockwise selection, <strong>UniCoDe</strong> enhances efficiency by integrating blockwise gradient guidance, scheduled particle sizes, and multinomial sampling.</em>
 </div>
 
 ## Performance and Results
