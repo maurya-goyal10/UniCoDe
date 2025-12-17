@@ -72,18 +72,14 @@ Post-inference, calculate aggregate performance using these specialized scripts:
 
 **UniCoDe** is a universal inference-time algorithm designed to align diffusion model outputs with downstream objectives by unifying **sampling-based exploration** and **gradient-guided optimization**. While traditional methods often struggle with sampling inefficiency or poor prior adherence, UniCoDe integrates local gradient signals directly into the denoising steps to steer trajectories toward high-reward regions. This overcomes the exponential search costs associated with complex rewards, allowing for more efficient generation. Ultimately, UniCoDe enables a superior trade-off between reward alignment and adherence to the diffusion prior, remaining competitive with state-of-the-art baselines across Text-to-Image (T2I) and (T+I)2I tasks.
 
-## The UniCoDe Framework
-UniCoDe merges the exploratory nature of sampling with directed gradient steering to enable precise control over diverse guidance scenarios.
-
 <div align="center">
     <img src="assets/teaser.png" alt="UniCoDe outputs" width="80%"/>
     <br>
     <em><strong>Visual Adaptability:</strong> UniCoDe effectively aligns T2I and (T+I)2I tasks with complex human-preference rewards like Pickscore and Aesthetic Scorer while maintaining high image fidelity.</em>
 </div>
 
-<br>
-
-**Core Mechanism:** The framework overcomes the sample inefficiency problem, where the gap between the reward distribution and diffusion prior grows exponentially, by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
+## The UniCoDe Framework
+UniCoDe merges the exploratory nature of sampling with directed gradient steering to enable precise control over diverse guidance scenarios.
 
 <div align="center">
     <img src="./assets/schematic_diagram.png" alt="UniCoDe framework schematic" width="80%"/>
@@ -91,8 +87,8 @@ UniCoDe merges the exploratory nature of sampling with directed gradient steerin
     <em><strong>Methodology Comparison:</strong> While <strong>BoN</strong> selects the best sample after full denoising and <strong>CoDe</strong> uses greedy blockwise selection, <strong>UniCoDe</strong> enhances efficiency by integrating blockwise gradient guidance, scheduled particle sizes, and multinomial sampling.</em>
 </div>
 
-## Performance and Results
-UniCoDe optimizes the balance between **reward alignment** (Pickscore) and **unconditional prior divergence** (CMMD).
+
+**Core Mechanism:** The framework overcomes the sample inefficiency problem, where the gap between the reward distribution and diffusion prior grows exponentially, by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment. In this example can see that UniCoDe optimizes the balance between **reward alignment** (Pickscore) and **unconditional prior divergence** (CMMD).
 
 <div align="center">
     <img src="./assets/rew_vs_div.png" alt="Reward vs Divergence plot" width="60%"/>
