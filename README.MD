@@ -59,7 +59,7 @@ Generate batch job scripts using [create_jobs.py](./BoN/jobs_split/create_jobs.p
 ---
 
 ### 3. Evaluation Metrics
-Post-inference, calculate aggregate performance using these specialized scripts:
+Post-generation, calculate aggregate performance using these specialized scripts:
 
 | Metric | Script Path |
 | :--- | :--- |
