@@ -83,7 +83,9 @@ UniCoDe merges the exploratory nature of sampling with directed gradient steerin
     <em><strong>Visual Adaptability:</strong> UniCoDe effectively aligns Text-to-Image and Style Transfer tasks with complex human-preference rewards like Pickscore and Aesthetic Scorer while maintaining high image fidelity.</em>
 </div>
 
-**Core Mechanism:** The framework overcomes the "sample inefficiency" problem—where the gap between the reward distribution and diffusion prior grows exponentially—by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
+<br>
+
+**Core Mechanism:** The framework overcomes the "sample inefficiency" problem, where the gap between the reward distribution and diffusion prior grows exponentially, by adding a local gradient "push" to the denoising trajectory. This steers samples toward high-reward regions, significantly reducing the sample count needed for alignment.
 
 <div align="center">
     <img src="./assets/schematic_diagram.png" alt="UniCoDe framework schematic" width="80%"/>
