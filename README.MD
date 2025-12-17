@@ -101,7 +101,7 @@ UniCoDe merges the exploratory nature of sampling with directed gradient steerin
 The trade-off between reward, fidelity, and compute is governed by three key variables:
 
 * **$N$ (Exploration):** Enhances reward-alignment through broader search but increases computational cost and prior divergence.
-* **$B_g$ (Gradient Intensity):** Lowering $B_g$ boosts rewards via a stronger gradient "push," but excessively low values may lead to "reward hacking."
+* **$B_g$ (Gradient Intensity):** Lowering $B_g$ boosts rewards via a stronger gradient push, but excessively low values may lead to reward hacking.
 * **$B_s$ (Sampling Frequency):** Lower $B_s$ values represent more aggressive sampling, improving alignment at the cost of higher divergence.
 
 ---
